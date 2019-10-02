@@ -1,0 +1,131 @@
+﻿<Window x:Class="calculator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:calculator"
+        mc:Ignorable="d"
+        Title="Калькулятор" Height="380" Width="300"
+        ResizeMode="CanMinimize">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Menu Grid.Row="0">
+            <MenuItem Header="Вид">
+                <MenuItem Header="Обычный"></MenuItem>
+                <MenuItem Header="Инженерный"></MenuItem>
+                <MenuItem Header="Программист"></MenuItem>
+                <MenuItem Header="Статистика"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Журнал"></MenuItem>
+                <MenuItem Header="Групп цифр по разрядам"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Обычный"></MenuItem>
+                <MenuItem Header="Преобразование единиц"></MenuItem>
+                <MenuItem Header="Вычисление дат"></MenuItem>
+                <MenuItem Header="Листы">
+                    <MenuItem Header="Ипотека"></MenuItem>
+                    <MenuItem Header="Автолищинг"></MenuItem>
+                    <MenuItem Header="Экономия топл (миль за галлон)"></MenuItem>
+                    <MenuItem Header="Экономия топл (л / 100 км)"></MenuItem>
+                </MenuItem>
+            </MenuItem>
+            <MenuItem Header="Правка">
+                <MenuItem Header="Копировать"></MenuItem>
+                <MenuItem Header="Вставить"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="Журнал"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Справка">
+                <MenuItem Header="Просмотреть справку"></MenuItem>
+                <Separator></Separator>
+                <MenuItem Header="О программе"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Grid ShowGridLines="True" Background="LightGray" Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="2*"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Grid Grid.ColumnSpan="5">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="2*"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <TextBox x:Name="Functions_calc" Grid.Row="0" Padding="5 5 5 0" BorderBrush="White" Focusable="False"></TextBox>
+                <TextBox x:Name="Tablo" Grid.Row="1" Text="0" Grid.ColumnSpan="5" TextAlignment="Right" Padding="5"
+                    FontSize="25pt" IsReadOnly="True" Focusable="False" Cursor="Arrow" ToolTip="Область вывода значений">
+                </TextBox>
+            </Grid>
+            
+            <Button Content="MC" Padding="5" Grid.Column="0" Grid.Row="1"></Button>
+            <Button Content="MR" Padding="5" Grid.Column="1" Grid.Row="1"></Button>
+            <Button Content="MS" Padding="5" Grid.Column="2" Grid.Row="1"></Button>
+            <Button Content="M+" Padding="5" Grid.Column="3" Grid.Row="1"></Button>
+            <Button Content="M-" Padding="5" Grid.Column="4" Grid.Row="1"></Button>
+
+            <Button Content="BackSp" Padding="5" Grid.Column="0" Grid.Row="2"
+                     Click="Clean_mode"></Button>
+            <Button Content="CE" Padding="5" Grid.Column="1" Grid.Row="2"
+                    Click="Clean_mode"></Button>
+            <Button Content="C" Padding="5" Grid.Column="2" Grid.Row="2"
+                     Click="Clean_mode"></Button>
+            <Button Content="+-" Padding="5" Grid.Column="3" Grid.Row="2"></Button>
+            <Button Content="Sqrt" Padding="5" Grid.Column="4" Grid.Row="2"
+                ToolTip="Вычисления квадаратного корня"></Button>
+
+            <Button Content="7" Padding="5" Grid.Column="0" Grid.Row="3"
+                    Click="Numbers"></Button>
+            <Button Content="8" Padding="5" Grid.Column="1" Grid.Row="3"
+                    Click="Numbers"></Button>
+            <Button Content="9" Padding="5" Grid.Column="2" Grid.Row="3"
+                    Click="Numbers"></Button>
+            <Button Content="/" Padding="5" Grid.Column="3" Grid.Row="3"></Button>
+            <Button Content="%" Padding="5" Grid.Column="4" Grid.Row="3"></Button>
+
+            <Button Content="4" Padding="5" Grid.Column="0" Grid.Row="4"
+                    Click="Numbers"></Button>
+            <Button Content="5" Padding="5" Grid.Column="1" Grid.Row="4"
+                    Click="Numbers"></Button>
+            <Button Content="6" Padding="5" Grid.Column="2" Grid.Row="4"
+                    Click="Numbers"></Button>
+            <Button Content="*" Padding="5" Grid.Column="3" Grid.Row="4"></Button>
+            <Button Content="1/x" Padding="5" Grid.Column="4" Grid.Row="4"></Button>
+
+            <Button Content="1" Padding="5" Grid.Column="0" Grid.Row="5"
+                    Click="Numbers"></Button>
+            <Button Content="2" Padding="5" Grid.Column="1" Grid.Row="5"
+                    Click="Numbers"></Button>
+            <Button Content="3" Padding="5" Grid.Column="2" Grid.Row="5"
+                    Click="Numbers"></Button>
+            <Button Content="-" Padding="5" Grid.Column="3" Grid.Row="5"></Button>
+            <Button Content="=" Padding="5" Grid.RowSpan="2"  Grid.Column="4" Grid.Row="5"></Button>
+
+            <Button Content="0" Padding="5" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="6"
+                    Click="Numbers"></Button>
+            <Button Content="," Padding="5" Grid.Column="2" Grid.Row="6"
+                    Click="Comma_Click"></Button>
+            <Button Content="+" Padding="5" Grid.Column="3" Grid.Row="6"
+                    Click="Operation"></Button>
+
+        </Grid>
+    </Grid>
+    
+</Window>
